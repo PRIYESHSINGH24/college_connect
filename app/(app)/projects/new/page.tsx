@@ -1,0 +1,2 @@
+import { PagePlaceholder } from "@/components/page-placeholder";
+export default function NewProjectPage() { return <PagePlaceholder eyebrow="Project studio" title="Start a project" description="Create a project space, define the problem, and invite the right teammates. The server-backed project form is the next step after configuring Supabase." actionHref="/projects" actionLabel="Back to projects" />; }

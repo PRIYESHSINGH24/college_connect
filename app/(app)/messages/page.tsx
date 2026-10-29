@@ -1,0 +1,5 @@
+import Link from "next/link";
+
+export default function MessagesPage() {
+  return <div className="max-w-4xl"><p className="eyebrow">Private conversations</p><h2 className="mt-1 text-3xl font-bold tracking-tight">Messages</h2><p className="mt-2 text-muted">Talk through ideas before you build together.</p><div className="surface mt-8 divide-y divide-line">{["Rhea Kapoor", "Aarav Mehta", "Design Club"].map((name, i) => <Link href={`/messages/${i + 1}`} key={name} className="flex items-center gap-4 p-5 transition hover:bg-quiet"><div className="grid h-11 w-11 place-items-center rounded-full bg-brand-soft text-sm font-bold text-brand">{name.split(" ").map((n) => n[0]).join("")}</div><div className="min-w-0 flex-1"><div className="flex justify-between"><h3 className="font-semibold">{name}</h3><span className="text-xs text-muted">{i + 1}h</span></div><p className="mt-1 truncate text-sm text-muted">{["Would you be up for a quick chat about the project?", "I added the API notes to the shared doc.", "Portfolio review starts at 6:30 PM."][i]}</p></div></Link>)}</div></div>;
+}

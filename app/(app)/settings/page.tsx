@@ -1,0 +1,3 @@
+export default function SettingsPage() {
+  return <div className="max-w-3xl"><p className="eyebrow">Account controls</p><h2 className="mt-1 text-3xl font-bold tracking-tight">Settings</h2><div className="mt-8 space-y-3">{[["Account", "Email, password, and session security"], ["Privacy", "Profile visibility, messages, and blocking"], ["Notifications", "Choose what deserves your attention"], ["Integrations", "GitHub connection and imported data"]].map(([title, detail]) => <div key={title} className="surface flex items-center justify-between p-5"><div><h3 className="font-semibold">{title}</h3><p className="mt-1 text-sm text-muted">{detail}</p></div><span className="text-muted">→</span></div>)}</div></div>;
+}
