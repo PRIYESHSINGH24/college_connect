@@ -1,0 +1,3 @@
+"use client";
+import { useRouter } from "next/navigation";
+export function VerificationReview({id}:{id:string}){const router=useRouter();async function update(status:"verified"|"rejected"){const r=await fetch(`/api/admin/verification/${id}`,{method:"PATCH",headers:{"content-type":"application/json"},body:JSON.stringify({status})});if(r.ok)router.refresh();else alert((await r.json()).error||"Update failed");}return <div className="flex gap-2"><button onClick={()=>update("verified")} className="btn-primary">Approve</button><button onClick={()=>update("rejected")} className="btn-secondary">Reject</button></div>}

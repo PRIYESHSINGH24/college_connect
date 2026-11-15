@@ -1,0 +1,3 @@
+"use client";
+import { useState } from "react";
+export function SaveOpportunity({id}:{id:string}){const [saved,setSaved]=useState(false);const [busy,setBusy]=useState(false);const [error,setError]=useState("");async function save(){setBusy(true);setError("");try{const r=await fetch(`/api/opportunities/${id}/save`,{method:"POST"});const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not save");setSaved(true);}catch(e){setError(e instanceof Error?e.message:"Could not save");}finally{setBusy(false);}}return <div><button onClick={save} disabled={busy||saved} className="btn-secondary">{saved?"Saved":busy?"Saving...":"Save opportunity"}</button>{error&&<p className="mt-1 text-xs text-red-600">{error}</p>}</div>}

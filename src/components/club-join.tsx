@@ -1,0 +1,4 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+export function ClubJoin({id,joined}:{id:string;joined:boolean}){const [done,setDone]=useState(joined);const [busy,setBusy]=useState(false);const [error,setError]=useState("");const router=useRouter();async function join(){setBusy(true);setError("");try{const r=await fetch(`/api/clubs/${id}/join`,{method:"POST"});const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not join club");setDone(true);router.refresh();}catch(e){setError(e instanceof Error?e.message:"Join failed.");}finally{setBusy(false);}}return <div><button onClick={join} disabled={done||busy} className={done?"btn-secondary":"btn-primary"}>{done?"Joined":busy?"Joining...":"Join club"}</button>{error&&<p className="mt-2 text-xs text-red-600">{error}</p>}</div>}

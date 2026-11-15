@@ -1,0 +1,3 @@
+"use client";
+import { useRouter } from "next/navigation";
+export function ApplicationReview({id}:{id:string}){const router=useRouter();async function decide(decision:"accepted"|"rejected"){const r=await fetch(`/api/project-applications/${id}/decision`,{method:"PATCH",headers:{"content-type":"application/json"},body:JSON.stringify({decision})});if(!r.ok){const d=await r.json();alert(d.error||"Could not update application.");return;}router.refresh();}return <div className="flex gap-2"><button onClick={()=>decide("accepted")} className="btn-primary">Accept</button><button onClick={()=>decide("rejected")} className="btn-secondary">Reject</button></div>}

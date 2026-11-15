@@ -1,0 +1,4 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+export function EventRegister({id,registered}:{id:string;registered:boolean}){const [done,setDone]=useState(registered);const [busy,setBusy]=useState(false);const [error,setError]=useState("");const router=useRouter();async function act(){setBusy(true);setError("");try{const r=await fetch(`/api/events/${id}/register`,{method:"POST"});const d=await r.json();if(!r.ok)throw new Error(d.error||"Registration failed.");setDone(true);router.refresh();}catch(e){setError(e instanceof Error?e.message:"Registration failed.");}finally{setBusy(false);}}return <div><button className={done?"btn-secondary":"btn-primary"} disabled={done||busy} onClick={act}>{done?"Registered":busy?"Registering...":"Register"}</button>{error&&<p className="mt-2 text-xs text-red-600">{error}</p>}</div>}

@@ -1,0 +1,4 @@
+"use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+export function FollowButton({userId,initiallyFollowing}:{userId:string;initiallyFollowing:boolean}){const [following,setFollowing]=useState(initiallyFollowing);const [busy,setBusy]=useState(false);const [error,setError]=useState("");const router=useRouter();async function toggle(){setBusy(true);setError("");try{const r=await fetch(`/api/users/${userId}/follow`,{method:following?"DELETE":"POST"});const d=await r.json();if(!r.ok)throw new Error(d.error||"Could not update follow.");setFollowing(!following);router.refresh();}catch(e){setError(e instanceof Error?e.message:"Action failed.");}finally{setBusy(false);}}return <div><button onClick={toggle} disabled={busy} className={following?"btn-secondary":"btn-primary"}>{busy?"Updating...":following?"Following":"Follow"}</button>{error&&<p className="mt-1 text-xs text-red-600">{error}</p>}</div>}

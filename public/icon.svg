@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="9" fill="#20231F"/>
+  <!-- lucide "users", stroke-lime on dark tile (ISC license, lucide.dev) -->
+  <g transform="translate(2.5 2.75) scale(1.125)" fill="none" stroke="#C7F36B"
+     stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 2h10v4h-10zm-5 12h10v4h-10zM5 7h14v2H5zM5 11h14v2H5z"/>
+    <path d="M7 2h2v4H7zM15 2h2v4H15zM21 2v4h2V2z"/>
+  </g>
+</svg>

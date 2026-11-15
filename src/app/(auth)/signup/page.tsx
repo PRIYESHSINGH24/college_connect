@@ -1,0 +1,2 @@
+import { AuthForm } from "@/components/auth-form";
+export default function SignupPage(){return <><p className="eyebrow">GET STARTED</p><h1 className="mt-2 text-3xl font-black tracking-tight">Join your campus</h1><p className="mb-7 mt-2 text-sm text-muted">Create your account and start building your student network.</p><AuthForm mode="signup"/><p className="mt-6 text-center text-xs leading-5 text-muted">Use your institution email where available. College verification is managed by approved domains and administrators.</p></>}
