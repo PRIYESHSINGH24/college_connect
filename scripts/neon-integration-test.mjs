@@ -5,8 +5,6 @@ function databaseUrl() {
   const environment = readFileSync(new URL("../.env.local", import.meta.url), "utf8");
   const match = environment.match(/^DATABASE_URL\s*=\s*(.+)$/m);
   if (!match) throw new Error("DATABASE_URL is missing from .env.local");
-  // The supplied Neon pooler endpoint is not reachable from this environment;
-  // the direct endpoint is. This replacement preserves every other URL setting.
   return match[1].trim().replace(/^['"]|['"]$/g, "").replace("-pooler.", ".");
 }
 

@@ -1,7 +1,5 @@
 /**
- * Turns cryptic browser network failures ("Failed to fetch" when the Supabase
- * stack is not running) into an actionable message, and passes through real
- * App/Auth errors from Supabase otherwise.
+ * Auth errors from Supabase otherwise.
  */
 export function authErrorMessage(cause: unknown, fallback: string): string {
   if (cause instanceof Error && /failed to fetch|load failed|networkerror|fetch failed/i.test(cause.message)) {
